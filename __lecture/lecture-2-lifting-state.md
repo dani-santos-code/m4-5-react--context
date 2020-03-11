@@ -20,16 +20,17 @@ Sometimes, you'll want to share data with a sibling component.
 
 ```js
 const App = () => {
+  const [searchTerm, setSearchTerm] = React.useState('');
   return (
     <>
-      <Header />
-      <MainContent />
+      <Header searchTerm={searchTearm} setSearchTerm={setSearchTerm}/>
+      <MainContent searchTerm={searchTearm} />
     </>
   );
 };
 
-const Header = () => {
-  const [searchTerm, setSearchTerm] = React.useState('');
+const Header = ({searchTearm, setSearchTerm}) => {
+
 
   return (
     <header>
@@ -39,7 +40,7 @@ const Header = () => {
   );
 };
 
-const MainContent = () => {
+const MainContent = ({searchTerm}) => {
   return (
     <main>
       {/* how do I access `searchTerm`? */}
@@ -90,7 +91,7 @@ const MainContent = () => {
 
 ---
 
-<!-- 
+<!--
 # Exercise
 
 Lift state up
@@ -195,7 +196,7 @@ const SearchResults = () => {
     />
   ))
 }
-``` 
+```
 
 ---
 -->
